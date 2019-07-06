@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {path: 'pokemon', loadChildren: () => import('../insects/insects.module').then(mod => mod.InsectsModule)}];
+  {path: 'insects', loadChildren: () => import('../insects/insects.module').then(mod => mod.InsectsModule)}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
