@@ -1,10 +1,11 @@
 class Insect {
-    scientificName: String;
-    popularNames: String[];
-    habitats: String[];
-    locomotion:{
-        walking: Boolean;
-        fliyng: Boolean;
-        swimming: Boolean;
-    }
+    id: number;
+    scientificName: string;
+    popularNames: string[];
+    habitats: string[];
+    locomotion: {
+        walking: boolean;
+        fliyng: boolean;
+        swimming: boolean;
+    };
 }
