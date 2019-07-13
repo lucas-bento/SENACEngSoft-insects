@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {InsectsListComponent} from './containers/insects-list/insects-list.component';
-import {InsectsDetailComponent} from './containers/insects-detail/insects-detail.component';
+import {InsectsComponent} from './containers/insects/insects.component';
+import {InsectComponent} from './containers/insect/insect.component';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'list'},
-  {path: 'list', component: InsectsListComponent},
-  {path: 'detail', component: InsectsDetailComponent},
+  {path: '', pathMatch: 'full', redirectTo: 'insects'},
+  {path: 'insects', component: InsectsComponent},
+  {path: 'insect', component: InsectComponent},
 ];
 
 @NgModule({
