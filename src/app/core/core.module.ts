@@ -12,7 +12,7 @@ import { HomeComponent } from './containers/home/home.component';
   imports: [
     CommonModule,
     CoreRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class CoreModule { }

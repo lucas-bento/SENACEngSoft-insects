@@ -6,13 +6,15 @@ import { InsectsListComponent } from './component/insects-list/insects-list.comp
 import { InsectsDetailComponent } from './component/insects-detail/insects-detail.component';
 import { InsectsComponent } from './containers/insects/insects.component';
 import { InsectComponent } from './containers/insect/insect.component';
+import {SharedModule} from '../core/shared/shared.module';
 
 
 @NgModule({
   declarations: [InsectsListComponent, InsectsDetailComponent, InsectsComponent, InsectComponent],
   imports: [
     CommonModule,
-    InsectsRoutingModule
+    InsectsRoutingModule,
+    SharedModule,
   ]
 })
 export class InsectsModule { }

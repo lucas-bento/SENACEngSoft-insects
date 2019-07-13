@@ -1,1 +1,28 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container fxFlexFill>
+
+  <mat-sidenav mode="over" #sidenav>
+    <mat-list>
+
+      <mat-list-item routerLink="/core/layout/home" (click)="sidenav.toggle()">
+        <mat-icon>home</mat-icon> Home
+      </mat-list-item>
+
+      <mat-list-item routerLink="/core/layout/insects" (click)="sidenav.toggle()">
+        <mat-icon>bug_report</mat-icon> Insects
+      </mat-list-item>
+
+    </mat-list>
+  </mat-sidenav>
+
+
+  <mat-sidenav-content fxFlexFill>
+
+    <mat-toolbar color="primary">
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon> Insects
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
