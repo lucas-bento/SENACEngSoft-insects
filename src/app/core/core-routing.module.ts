@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: 'layout', component: LayoutComponent, children: [
       {path: '', pathMatch: 'full', redirectTo: 'home'},
       {path: 'home', component: HomeComponent},
-      {path: 'insects', loadChildren: () => import('../insects/insects.module').then(mod => mod.InsectsModule)}
+      {path: 'insects', loadChildren: () => import('../insects/insects.module').then(mod => mod.InsectsModule)},
   ]},
 ];
 
