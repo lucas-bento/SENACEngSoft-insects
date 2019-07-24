@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './material/material.module';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatCardModule, MatExpansionModule} from '@angular/material';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AwesomeModule } from './awesome/awesome.module'
 
 
 @NgModule({
@@ -14,8 +13,7 @@ import {MatCardModule, MatExpansionModule} from '@angular/material';
   exports: [
     MaterialModule,
     FlexLayoutModule,
-    MatCardModule,
-    MatExpansionModule,
+    AwesomeModule,
   ]
 })
 export class SharedModule { }

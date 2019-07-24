@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { INSECTS } from '../../model/insects_mock';
+import { Insect } from '../../model/insect';
 
 @Component({
   selector: 'app-insects',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./insects.component.scss']
 })
 export class InsectsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  
+  ngOnInit(): void {
+    console.log(this.insects)
   }
+  
+
+  insects: Insect[] = INSECTS;
+
+
 
 }

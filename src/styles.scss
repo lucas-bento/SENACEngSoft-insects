@@ -13,7 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $insects-primary: mat-palette($mat-green);
-$insects-accent: mat-palette($mat-amber, A200, A100, A400);
+$insects-accent: mat-palette($mat-brown, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $insects-warn: mat-palette($mat-red);
@@ -30,3 +30,16 @@ $insects-theme: mat-dark-theme($insects-primary, $insects-accent, $insects-warn)
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.insects-primary {
+    color: mat-color($insects-primary);
+}
+
+.insects-accent {
+    color: mat-color($insects-accent);
+}
+
+.insects-warn {
+    color: mat-color($insects-warn);
+}

@@ -6,7 +6,8 @@ import { InsectsListComponent } from './component/insects-list/insects-list.comp
 import { InsectsDetailComponent } from './component/insects-detail/insects-detail.component';
 import { InsectsComponent } from './containers/insects/insects.component';
 import { InsectComponent } from './containers/insect/insect.component';
-import {SharedModule} from '../core/shared/shared.module';
+import { SharedModule } from '../core/shared/shared.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import {SharedModule} from '../core/shared/shared.module';
     CommonModule,
     InsectsRoutingModule,
     SharedModule,
+    FontAwesomeModule
   ]
 })
 export class InsectsModule { }

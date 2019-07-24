@@ -1,14 +1,8 @@
   <mat-list>
-    <mat-list-item routerLink="/core/layout/insects/insect">
-      <mat-icon>bug_report</mat-icon> Frumiga
-    </mat-list-item>
+      <mat-list-item *ngFor="let insect of insects"
+                     [routerLink]="['/core/layout/insects/insect', insect.id]">
 
-    <mat-list-item routerLink="/core/layout/insects/insect">
-      <mat-icon>bug_report</mat-icon> Brabuleta
-    </mat-list-item>
+        <mat-icon color="primary">bug_report</mat-icon> {{insect.popularName}}
 
-    <mat-list-item routerLink="/core/layout/insects/insect">
-      <mat-icon>bug_report</mat-icon> Lacraia
-    </mat-list-item>
+      </mat-list-item>
   </mat-list>
-

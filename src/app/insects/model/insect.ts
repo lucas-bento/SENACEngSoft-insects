@@ -1,11 +1,14 @@
-class Insect {
+export class Insect {
     id: number;
     scientificName: string;
-    popularNames: string[];
+    popularName: string;
+    image: string;
+    description: string;
+
     habitats: string[];
     locomotion: {
         walking: boolean;
-        fliyng: boolean;
+        flying: boolean;
         swimming: boolean;
     };
 }

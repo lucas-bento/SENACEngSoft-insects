@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'insects'},
   {path: 'insects', component: InsectsComponent},
   {path: 'insect', component: InsectComponent},
+  {path: 'insect/:id', component: InsectComponent},
 ];
 
 @NgModule({

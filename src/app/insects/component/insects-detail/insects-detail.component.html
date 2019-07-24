@@ -1,16 +1,66 @@
 <div class="container" fxLayout="column" fxLayoutAlign="start">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Brabuleta</mat-card-title>
-      <mat-card-subtitle>Monarca</mat-card-subtitle>
+      <mat-card-title>{{insect.popularName}}</mat-card-title>
+      <mat-card-subtitle>{{insect.scientificName}}</mat-card-subtitle>
     </mat-card-header>
-
+    <img mat-card-image src="{{insect.image}}" alt="{{insect.popularName}}">
     <mat-card-content>
-      açlsdkfjasdç,fasnmdçlfkj
+
+      <div class="container" fxLayout="row" fxLayoutAlign="space-between">
+        <div [ngClass]="{'insects-primary': insect.locomotion.flying,
+                        'insects-warn': !insect.locomotion.flying }"
+             (click)="toggleLocomotion('flying')">
+              <fa-icon [icon]="['fas', 'wind']" size="4x" class="mat-primary"></fa-icon>
+        </div>
+  
+        <div [ngClass]="{'insects-primary': insect.locomotion.walking,
+                        'insects-warn': !insect.locomotion.walking}"
+             (click)="toggleLocomotion('walking')">
+            <fa-icon [icon]="['fas', 'shoe-prints']" size="4x"></fa-icon>
+        </div>
+
+        <div [ngClass]="{'insects-primary': insect.locomotion.swimming,
+                        'insects-warn': !insect.locomotion.swimming}"
+             (click)="toggleLocomotion('swimming')">
+            <fa-icon [icon]="['fas', 'water']" size="4x"></fa-icon>
+        </div>
+      </div>
+
+      <div>
+        <p>
+          {{insect.description}}
+        </p>
+      </div>
+
+      <div>
+        <h4>Habitats</h4>
+
+        <mat-form-field class="example-chip-list">
+
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let habitat of insect.habitats" (removed)="removeHabitat(habitat)">
+                {{ habitat }}
+                <mat-icon matChipRemove >cancel</mat-icon>
+            </mat-chip>
+
+            <input
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+        
+      </mat-form-field>
+      </div>
     </mat-card-content>
 
+
     <mat-card-actions>
-      <button mat-button routerLink="/core/layout/insects">Voltar para lista</button>
+      <div fxLayoutAlign="space-between">
+        <button mat-button routerLink="/core/layout/insects" class="insects-primary">Voltar para lista</button>
+        <button mat-button class="insects-primary">Salvar</button>
+      </div>
     </mat-card-actions>
   </mat-card>
 </div>
