@@ -2,7 +2,7 @@ import {Insect} from './insect';
 
 export const INSECTS: Insect[] = [
     {
-      id: 1,
+      id: 0,
       scientificName: "brabus letus maximus",
       popularName: "Brabuleta",
       description:"Borboleta é um inseto voador, que possui dois pares de asas. São todos os insetos alados da família dos lepidópteros diurnos. São encontrada na natureza com diversas cores e tamanhos. As borboletas se alimentam basicamente do nectar das flores e sumo em decomposição dos frutos.",
@@ -15,7 +15,7 @@ export const INSECTS: Insect[] = [
       }
     },
     {
-      id: 2,
+      id: 1,
       scientificName: "wolkswagen",
       popularName: "Besouro",
       description:"Besouro é o nome que se dá a várias espécies de insetos que têm um par de asas duras. Elas cobrem e protegem um segundo par de asas, usadas por alguns besouros para voar. Antigamente, todos os besouros podiam voar. Com o tempo, porém, muitas espécies perderam essa habilidade.",
@@ -28,7 +28,7 @@ export const INSECTS: Insect[] = [
       }
     },
     {
-      id: 3,
+      id: 2,
       scientificName: "scholopendra chei di perna",
       popularName: "Lacraia",
       description:"Lacraias, também chamadas de centopeias ou escolopenderas, são animais que apresentam um par de patas em cada um dos vários segmentos de seu corpo comprido e de formato achatado. Possuem, na cabeça, um par de antenas articuladas, alguns pares de olhos, um par de mandíbulas, dois pares de maxilares, além de um par de forcípulas e o aguilhão, utilizados para a inoculação do veneno. Este contém histamina, dentre diversos outros componentes, intensificando a possibilidade de surgirem reações alérgicas no indivíduo inoculado. ",

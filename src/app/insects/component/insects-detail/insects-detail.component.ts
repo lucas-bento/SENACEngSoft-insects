@@ -2,6 +2,8 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, OnInit, Input } from '@angular/core';
 import { Insect } from '../../model/insect';
 import { MatChipInputEvent} from '@angular/material';
+import { INSECTS } from '../../model/insects_mock';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-insects-detail',
@@ -12,22 +14,21 @@ export class InsectsDetailComponent implements OnInit {
 
   @Input()
   insect: Insect;
+  insects: Insect[] = INSECTS;
 
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
     if ((value || '').trim()) {
       this.insect.habitats.push(value.trim());
     }
 
-    // Reset the input value
     if (input) {
       input.value = '';
     }
@@ -35,8 +36,6 @@ export class InsectsDetailComponent implements OnInit {
 
   removeHabitat(habitat: string): void {
     this.insect.habitats = this.insect.habitats.filter(item => item !== habitat);
-
-    console.log("removing: " + habitat)
   }
 
   toggleLocomotion(mode: string): void {
@@ -46,12 +45,43 @@ export class InsectsDetailComponent implements OnInit {
       this.insect.locomotion.walking = !this.insect.locomotion.walking;
     } else if (mode === 'swimming') {
       this.insect.locomotion.swimming = !this.insect.locomotion.swimming;
-
     }
   }
 
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]);
+
+      reader.onload = (event) => {
+        this.insect.image = event.target.result;
+      }
+    }
+  }
+
+  save() {
+    this.insects[this.insect.id] = this.insect
+    this._snackBar.open("Inseto salvo!", null,{
+      duration: 1000
+    });
+  }
 
   ngOnInit() {
-    console.log(this.insect)
+    if (this.insect == null) {
+      this.insect = {
+        id: this.insects.length,
+        scientificName: "",
+        popularName: "",
+        description:"",
+        image: "",
+        habitats: [],
+        locomotion: {
+            walking: false,
+            flying: false,
+            swimming: false,
+        }
+      };
+    }
   }
 }

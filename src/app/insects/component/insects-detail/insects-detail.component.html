@@ -1,10 +1,27 @@
 <div class="container" fxLayout="column" fxLayoutAlign="start">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>{{insect.popularName}}</mat-card-title>
-      <mat-card-subtitle>{{insect.scientificName}}</mat-card-subtitle>
+
+        <mat-card-title class="full-width">
+          <input type="text" matInput placeholder="Nome popular" [(ngModel)]="insect.popularName">
+        </mat-card-title>
+
+        <mat-card-subtitle class="full-width">
+          <input type="text" matInput placeholder="Nome cientifico" [(ngModel)]="insect.scientificName">
+        </mat-card-subtitle>
+
+      <!-- <mat-card-title>{{insect.popularName}}</mat-card-title> -->
+      <!-- <mat-card-subtitle>{{insect.scientificName}}</mat-card-subtitle> -->
     </mat-card-header>
-    <img mat-card-image src="{{insect.image}}" alt="{{insect.popularName}}">
+
+    <label class="hoverable" for="fileInput">
+        <img mat-card-image  [(ngModel)]="insect.image" [src]="insect.image ? insect.image : 'https://omaharentalads.com/images/ladybugs-clipart-symmetrical-7.png'" alt="{{insect.popularName}}">
+        <div class="hover-text">Choose file</div>
+        <div class="background"></div>
+    </label>
+    <input id="fileInput" type='file' (change)="onSelectFile($event)">
+
+    
     <mat-card-content>
 
       <div class="container" fxLayout="row" fxLayoutAlign="space-between">
@@ -28,15 +45,17 @@
       </div>
 
       <div>
-        <p>
-          {{insect.description}}
-        </p>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Descrição" 
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1" [(ngModel)]="insect.description"></textarea>
+        </mat-form-field>
       </div>
 
       <div>
-        <h4>Habitats</h4>
-
-        <mat-form-field class="example-chip-list">
+        <mat-form-field class="chip-list">
+          <mat-label>Habitats</mat-label>
 
           <mat-chip-list #chipList>
             <mat-chip *ngFor="let habitat of insect.habitats" (removed)="removeHabitat(habitat)">
@@ -51,7 +70,7 @@
             (matChipInputTokenEnd)="add($event)">
           </mat-chip-list>
         
-      </mat-form-field>
+        </mat-form-field>
       </div>
     </mat-card-content>
 
@@ -59,7 +78,7 @@
     <mat-card-actions>
       <div fxLayoutAlign="space-between">
         <button mat-button routerLink="/core/layout/insects" class="insects-primary">Voltar para lista</button>
-        <button mat-button class="insects-primary">Salvar</button>
+        <button mat-button class="insects-primary" (click)="save()">Salvar</button>
       </div>
     </mat-card-actions>
   </mat-card>
