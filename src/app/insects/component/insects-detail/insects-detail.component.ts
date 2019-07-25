@@ -55,7 +55,8 @@ export class InsectsDetailComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
 
       reader.onload = (event) => {
-        this.insect.image = event.target.result;
+        var result:any = reader.result
+        this.insect.image = result;
       }
     }
   }
