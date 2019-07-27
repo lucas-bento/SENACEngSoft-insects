@@ -1,9 +1,9 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, OnInit, Input } from '@angular/core';
 import { Insect } from '../../model/insect';
-import { MatChipInputEvent} from '@angular/material';
+import { MatChipInputEvent } from '@angular/material';
 import { INSECTS } from '../../model/insects_mock';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-insects-detail',

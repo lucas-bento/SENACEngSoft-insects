@@ -16,7 +16,7 @@
 
     <label class="hoverable" for="fileInput">
         <img mat-card-image  [(ngModel)]="insect.image" [src]="insect.image ? insect.image : 'https://omaharentalads.com/images/ladybugs-clipart-symmetrical-7.png'" alt="{{insect.popularName}}">
-        <div class="hover-text">Choose file</div>
+        <div class="hover-text">Escolher imagem</div>
         <div class="background"></div>
     </label>
     <input id="fileInput" type='file' (change)="onSelectFile($event)">
