@@ -4,7 +4,7 @@ import { Insect } from '../../model/insect.model';
 import { MatChipInputEvent } from '@angular/material';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Action } from '@ngrx/store';
-import { unselectInsect } from '../../store/actions/insect.actions';
+import {unselectInsect, updateInsect} from '../../store/actions/insect.actions';
 import {FormBuilder} from '@angular/forms';
 
 @Component({
@@ -83,6 +83,8 @@ export class InsectsDetailComponent implements OnInit {
 
   save() {
     // this.insects[this.insect.id] = this.insect
+
+    this.actionEmmiter.emit(updateInsect({insect: this.insectForm.value}))
     this._snackBar.open('Inseto salvo!', null, {
       duration: 1000
     });
