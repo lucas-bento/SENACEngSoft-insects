@@ -1,1 +1,1 @@
-<app-insects-detail [insect]="insect"></app-insects-detail>
+<app-insects-detail [insect]="insect$ | async" (actionEmmiter)="dispatch($event)" ></app-insects-detail>

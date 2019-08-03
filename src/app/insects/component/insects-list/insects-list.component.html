@@ -1,5 +1,6 @@
   <mat-list>
       <mat-list-item *ngFor="let insect of insects"
+                     (click)="select(insect)"
                      [routerLink]="['/core/layout/insects/insect', insect.id]">
 
         <mat-icon color="primary">bug_report</mat-icon> {{insect.popularName}}

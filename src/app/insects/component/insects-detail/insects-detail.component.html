@@ -1,85 +1,140 @@
 <div class="container" fxLayout="column" fxLayoutAlign="start">
+  <form [formGroup]="insectForm">
   <mat-card>
     <mat-card-header>
-
-        <mat-card-title class="full-width">
-          <input type="text" matInput placeholder="Nome popular" [(ngModel)]="insect.popularName">
-        </mat-card-title>
-
-        <mat-card-subtitle class="full-width">
-          <input type="text" matInput placeholder="Nome cientifico" [(ngModel)]="insect.scientificName">
-        </mat-card-subtitle>
-
-      <!-- <mat-card-title>{{insect.popularName}}</mat-card-title> -->
-      <!-- <mat-card-subtitle>{{insect.scientificName}}</mat-card-subtitle> -->
+       <mat-card-title>{{insectForm.value?.popularName}}</mat-card-title>
+       <mat-card-subtitle>{{insectForm.value?.scientificName}}</mat-card-subtitle>
     </mat-card-header>
 
-    <label class="hoverable" for="fileInput">
-        <img mat-card-image  [(ngModel)]="insect.image" [src]="insect.image ? insect.image : 'https://omaharentalads.com/images/ladybugs-clipart-symmetrical-7.png'" alt="{{insect.popularName}}">
-        <div class="hover-text">Escolher imagem</div>
-        <div class="background"></div>
-    </label>
-    <input id="fileInput" type='file' (change)="onSelectFile($event)">
-
-    
     <mat-card-content>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Nome Popular" formControlName="popularName">
+  </mat-form-field>
 
-      <div class="container" fxLayout="row" fxLayoutAlign="space-between">
-        <div [ngClass]="{'insects-primary': insect.locomotion.flying,
-                        'insects-warn': !insect.locomotion.flying }"
-             (click)="toggleLocomotion('flying')">
-              <fa-icon [icon]="['fas', 'wind']" size="4x" class="mat-primary"></fa-icon>
-        </div>
-  
-        <div [ngClass]="{'insects-primary': insect.locomotion.walking,
-                        'insects-warn': !insect.locomotion.walking}"
-             (click)="toggleLocomotion('walking')">
-            <fa-icon [icon]="['fas', 'shoe-prints']" size="4x"></fa-icon>
-        </div>
-
-        <div [ngClass]="{'insects-primary': insect.locomotion.swimming,
-                        'insects-warn': !insect.locomotion.swimming}"
-             (click)="toggleLocomotion('swimming')">
-            <fa-icon [icon]="['fas', 'water']" size="4x"></fa-icon>
-        </div>
-      </div>
-
-      <div>
-        <mat-form-field class="full-width">
-          <textarea matInput placeholder="Descrição" 
-          cdkTextareaAutosize
-          #autosize="cdkTextareaAutosize"
-          cdkAutosizeMinRows="1" [(ngModel)]="insect.description"></textarea>
-        </mat-form-field>
-      </div>
-
-      <div>
-        <mat-form-field class="chip-list">
-          <mat-label>Habitats</mat-label>
-
-          <mat-chip-list #chipList>
-            <mat-chip *ngFor="let habitat of insect.habitats" (removed)="removeHabitat(habitat)">
-                {{ habitat }}
-                <mat-icon matChipRemove >cancel</mat-icon>
-            </mat-chip>
-
-            <input
-            [matChipInputFor]="chipList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="addOnBlur"
-            (matChipInputTokenEnd)="add($event)">
-          </mat-chip-list>
-        
-        </mat-form-field>
-      </div>
     </mat-card-content>
 
 
     <mat-card-actions>
       <div fxLayoutAlign="space-between">
-        <button mat-button routerLink="/core/layout/insects" class="insects-primary">Voltar para lista</button>
+        <button mat-button routerLink="/core/layout/insects" class="insects-primary" (click)="unselect()">Voltar para lista</button>
         <button mat-button class="insects-primary" (click)="save()">Salvar</button>
       </div>
     </mat-card-actions>
   </mat-card>
+
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  <mat-card>-->
+<!--    <mat-card-header>-->
+
+<!--      <mat-card-title class="full-width">-->
+<!--        <input type="text" matInput placeholder="Nome popular" [(ngModel)]="insect.popularName">-->
+<!--      </mat-card-title>-->
+
+<!--      <mat-card-subtitle class="full-width">-->
+<!--        <input type="text" matInput placeholder="Nome cientifico" [(ngModel)]="insect.scientificName">-->
+<!--      </mat-card-subtitle>-->
+
+<!--      &lt;!&ndash; <mat-card-title>{{insect.popularName}}</mat-card-title> &ndash;&gt;-->
+<!--      &lt;!&ndash; <mat-card-subtitle>{{insect.scientificName}}</mat-card-subtitle> &ndash;&gt;-->
+<!--    </mat-card-header>-->
+
+<!--    <label class="hoverable" for="fileInput">-->
+<!--      <img mat-card-image  [(ngModel)]="insect.image" [src]="insect.image ? insect.image : 'https://omaharentalads.com/images/ladybugs-clipart-symmetrical-7.png'" alt="{{insect.popularName}}">-->
+<!--      <div class="hover-text">Escolher imagem</div>-->
+<!--      <div class="background"></div>-->
+<!--    </label>-->
+<!--    <input id="fileInput" type='file' (change)="onSelectFile($event)">-->
+
+
+<!--    <mat-card-content>-->
+
+<!--      <div class="container" fxLayout="row" fxLayoutAlign="space-between">-->
+<!--        <div [ngClass]="{'insects-primary': insect.locomotion.flying,-->
+<!--                        'insects-warn': !insect.locomotion.flying }"-->
+<!--             (click)="toggleLocomotion('flying')">-->
+<!--          <fa-icon [icon]="['fas', 'wind']" size="4x" class="mat-primary"></fa-icon>-->
+<!--        </div>-->
+
+<!--        <div [ngClass]="{'insects-primary': insect.locomotion.walking,-->
+<!--                        'insects-warn': !insect.locomotion.walking}"-->
+<!--             (click)="toggleLocomotion('walking')">-->
+<!--          <fa-icon [icon]="['fas', 'shoe-prints']" size="4x"></fa-icon>-->
+<!--        </div>-->
+
+<!--        <div [ngClass]="{'insects-primary': insect.locomotion.swimming,-->
+<!--                        'insects-warn': !insect.locomotion.swimming}"-->
+<!--             (click)="toggleLocomotion('swimming')">-->
+<!--          <fa-icon [icon]="['fas', 'water']" size="4x"></fa-icon>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div>-->
+<!--        <mat-form-field class="full-width">-->
+<!--          <textarea matInput placeholder="Descrição"-->
+<!--                    cdkTextareaAutosize-->
+<!--                    #autosize="cdkTextareaAutosize"-->
+<!--                    cdkAutosizeMinRows="1" [(ngModel)]="insect.description"></textarea>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+
+<!--      <div>-->
+<!--        <mat-form-field class="chip-list">-->
+<!--          <mat-label>Habitats</mat-label>-->
+
+<!--          <mat-chip-list #chipList>-->
+<!--            <mat-chip *ngFor="let habitat of insect.habitats" (removed)="removeHabitat(habitat)">-->
+<!--              {{ habitat }}-->
+<!--              <mat-icon matChipRemove >cancel</mat-icon>-->
+<!--            </mat-chip>-->
+
+<!--            <input-->
+<!--              [matChipInputFor]="chipList"-->
+<!--              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"-->
+<!--              [matChipInputAddOnBlur]="addOnBlur"-->
+<!--              (matChipInputTokenEnd)="add($event)">-->
+<!--          </mat-chip-list>-->
+
+<!--        </mat-form-field>-->
+<!--      </div>-->
+<!--    </mat-card-content>-->
+
+
+<!--    <mat-card-actions>-->
+<!--      <div fxLayoutAlign="space-between">-->
+<!--        <button mat-button routerLink="/core/layout/insects" class="insects-primary" (click)="unselect()">Voltar para lista</button>-->
+<!--        <button mat-button class="insects-primary" (click)="save()">Salvar</button>-->
+<!--      </div>-->
+<!--    </mat-card-actions>-->
+<!--  </mat-card>-->
 </div>

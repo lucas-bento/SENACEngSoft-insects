@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { INSECTS } from '../../model/insects_mock';
-import { Insect } from '../../model/insect';
+import { Insect } from '../../model/insect.model';
+import {InsectsState} from '../../store/reducers/insect.reducer';
+import {Action, select, Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {getAllInsects} from '../../store/selectors/insect.selectors';
 
 @Component({
   selector: 'app-insects',
@@ -8,14 +11,15 @@ import { Insect } from '../../model/insect';
   styleUrls: ['./insects.component.scss']
 })
 export class InsectsComponent implements OnInit {
-  
+
+  insects$: Observable<Insect []>;
+
+  constructor(private store: Store<InsectsState>) { }
   ngOnInit(): void {
-    console.log(this.insects)
+    this.insects$ = this.store.pipe(select(getAllInsects));
   }
-  
 
-  insects: Insect[] = INSECTS;
-
-
-
+  dispatch(action: Action) {
+    this.store.dispatch(action);
+  }
 }

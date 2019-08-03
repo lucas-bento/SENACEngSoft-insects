@@ -9,6 +9,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCoffee, faWind, faWater, faShoePrints } from '@fortawesome/free-solid-svg-icons';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import {CustomSerializer} from './reducers/custom-route-serializer';
 
 
 @NgModule({
@@ -21,7 +27,17 @@ import { faCoffee, faWind, faWater, faShoePrints } from '@fortawesome/free-solid
     BrowserAnimationsModule,
     FlexLayoutModule,
     FontAwesomeModule,
-  ],
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreRouterConnectingModule.forRoot({
+      serializer: CustomSerializer
+    })  ],
   providers: [],
   bootstrap: [AppComponent]
 })

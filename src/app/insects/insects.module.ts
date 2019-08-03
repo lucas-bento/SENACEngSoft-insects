@@ -8,6 +8,10 @@ import { InsectsComponent } from './containers/insects/insects.component';
 import { InsectComponent } from './containers/insect/insect.component';
 import { SharedModule } from '../core/shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {StoreModule} from '@ngrx/store';
+import {insectReducer} from './store/reducers/global.reducer';
+import {ReactiveFormsModule} from '@angular/forms';
+
 
 
 @NgModule({
@@ -16,7 +20,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CommonModule,
     InsectsRoutingModule,
     SharedModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    StoreModule.forFeature('insect', insectReducer),
+    ReactiveFormsModule,
   ]
 })
 export class InsectsModule { }
