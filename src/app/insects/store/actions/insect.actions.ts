@@ -1,26 +1,26 @@
 import {createAction, props} from '@ngrx/store';
 import {Insect} from '../../model/insect.model';
 
-export const selectInsect = createAction(
-  '[Insects] Select insect.',
+export const selectBugView = createAction(
+  '[Insects] Select bugView.',
   props<{insect: Insect}>()
 );
 
-export const unselectInsect = createAction(
-  '[Insects] Unselect insect.'
+export const unselectBugView = createAction(
+  '[Insects] Unselect bugView.'
 );
 
-export const createInsect = createAction(
-  '[Insects] Create insect.',
+export const createBugView = createAction(
+  '[Insects] Create bugView.',
   props<{insect: Insect}>()
 );
 
-export const updateInsect = createAction(
-  '[Insects] Update insect.',
+export const updateBugView = createAction(
+  '[Insects] Update bugView.',
   props<{insect: Insect}>()
 );
 
-export const deleteInsect = createAction(
-  '[Insects] Delete insect.',
+export const deleteBugView = createAction(
+  '[Insects] Delete bugView.',
   props<{id: number}>()
 );

@@ -1,14 +1,14 @@
 import {Insect} from '../../model/insect.model';
 import {Action, createReducer, on} from '@ngrx/store';
-import {createInsect, deleteInsect, selectInsect, unselectInsect, updateInsect} from '../actions/insect.actions';
+import {createBugView, deleteBugView, selectBugView, unselectBugView, updateBugView} from '../actions/insect.actions';
 import {createEntityAdapter, EntityState} from '@ngrx/entity';
 
 
-export const insectAdapter = createEntityAdapter<Insect>({
+export const bugViewAdapter = createEntityAdapter<Insect>({
   sortComparer: (a: Insect, b: Insect) => a.popularName.localeCompare(b.popularName)
 });
 
-export interface InsectsState extends EntityState<Insect> {
+export interface BugViewState extends EntityState<Insect> {
   insect?: Insect;
 }
 
@@ -69,20 +69,20 @@ const pog = [
 
 
 
-const initialState = insectAdapter.addAll(pog, insectAdapter.getInitialState());
+const initialState = bugViewAdapter.addAll(pog, bugViewAdapter.getInitialState());
 
 const reducer = createReducer(
   initialState,
-  on(selectInsect, (state, {insect}) => ({...state, insect})),
-  on(unselectInsect, (state: InsectsState) => {
+  on(selectBugView, (state, {insect}) => ({...state, insect})),
+  on(unselectBugView, (state: BugViewState) => {
     const {insect,  ...rest} = state;
     return rest;
   }),
-  on(createInsect, (state, {insect}) => insectAdapter.addOne(insect, state)),
-  on(updateInsect, (state, {insect}) => insectAdapter.updateOne({id: insect.id, changes: insect}, state)),
-  on(deleteInsect, (state, {id}) => insectAdapter.removeOne(id, state)),
+  on(createBugView, (state, {insect}) => bugViewAdapter.addOne(insect, state)),
+  on(updateBugView, (state, {insect}) => bugViewAdapter.updateOne({id: insect.id, changes: insect}, state)),
+  on(deleteBugView, (state, {id}) => bugViewAdapter.removeOne(id, state)),
 );
 
-export function insectsReducer(state: InsectsState, action: Action) {
+export function bugViewReducer(state: BugViewState, action: Action) {
   return reducer(state, action);
 }

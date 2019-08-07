@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Insect } from '../../model/insect.model';
-import {InsectsState} from '../../store/reducers/insect.reducer';
+import {BugViewState} from '../../store/reducers/insect.reducer';
 import {Action, select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {getAllInsects} from '../../store/selectors/insect.selectors';
@@ -14,7 +14,7 @@ export class InsectsComponent implements OnInit {
 
   insects$: Observable<Insect []>;
 
-  constructor(private store: Store<InsectsState>) { }
+  constructor(private store: Store<BugViewState>) { }
   ngOnInit(): void {
     this.insects$ = this.store.pipe(select(getAllInsects));
   }

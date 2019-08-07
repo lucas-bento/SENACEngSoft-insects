@@ -1,6 +1,6 @@
 import {createSelector} from '@ngrx/store';
 import {getInsectState} from '../reducers/global.reducer';
-import {insectAdapter} from '../reducers/insect.reducer';
+import {bugViewAdapter} from '../reducers/insect.reducer';
 
 export const getInsectsState = createSelector(
   getInsectState,
@@ -10,7 +10,7 @@ export const getInsectsState = createSelector(
 
 export const getAllInsects = createSelector(
   getInsectsState,
-  state => insectAdapter.getSelectors().selectAll(state)
+  state => bugViewAdapter.getSelectors().selectAll(state)
 );
 
 export const getSelectedInsect = createSelector(

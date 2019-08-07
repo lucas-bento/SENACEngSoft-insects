@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Insect } from '../../model/insect.model';
 import {Action} from '@ngrx/store';
-import {selectInsect} from '../../store/actions/insect.actions';
+import {selectBugView} from '../../store/actions/insect.actions';
 
 
 @Component({
@@ -24,6 +24,6 @@ export class InsectsListComponent implements OnInit {
   }
 
   select(insect: Insect) {
-    this.actionEmmiter.emit(selectInsect({insect}));
+    this.actionEmmiter.emit(selectBugView({insect}));
   }
 }
