@@ -17,18 +17,16 @@ export class InsectsDetailComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
-  insectForm = this.fb.group({
-    id: [''],
-    scientificName: [''],
-    popularName: [''],
-    description: [''],
-  });
+  _insect:Insect
 
   @Input('insect')
-  set insect(insect: Insect) {
-    this.insectForm.patchValue(insect);
+  set insect(insect:Insect) {
+    this._insect = JSON.parse(JSON.stringify(insect))
   }
-  // insect: Insect;
+
+  get insect() {
+    return this._insect
+  }
 
   @Output()
   actionEmmiter = new EventEmitter<Action>();
@@ -84,7 +82,8 @@ export class InsectsDetailComponent implements OnInit {
   save() {
     // this.insects[this.insect.id] = this.insect
 
-    this.actionEmmiter.emit(updateBugView({insect: this.insectForm.value}))
+    this.actionEmmiter.emit(updateBugView({insect: this.insect}))
+
     this._snackBar.open('Inseto salvo!', null, {
       duration: 1000
     });
