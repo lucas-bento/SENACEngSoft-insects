@@ -1,14 +1,14 @@
 export class Insect {
-    id: number;
-    scientificName: string;
+    id: string;
+    // scientificName: string;
     popularName: string;
-    image: string;
-    description: string;
-
-    habitats: string[];
-    locomotion: {
-        walking: boolean;
-        flying: boolean;
-        swimming: boolean;
-    };
+    // image: string;
+    // description: string;
+    //
+    // habitats: string[];
+    // locomotion: {
+    //     walking: boolean;
+    //     flying: boolean;
+    //     swimming: boolean;
+    // };
 }

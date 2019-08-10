@@ -1,6 +1,12 @@
 import {createAction, props} from '@ngrx/store';
 import {Insect} from '../../model/insect.model';
 
+
+export const updateBugList = createAction(
+  '[Insects] Update bugView list',
+  props<{insects: Insect[]}>(),
+);
+
 export const selectBugView = createAction(
   '[Insects] Select bugView.',
   props<{insect: Insect}>()
@@ -22,5 +28,6 @@ export const updateBugView = createAction(
 
 export const deleteBugView = createAction(
   '[Insects] Delete bugView.',
-  props<{id: number}>()
+  props<{id: string}>()
 );
+

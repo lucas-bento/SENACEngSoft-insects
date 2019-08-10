@@ -10,11 +10,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCoffee, faWind, faWater, faShoePrints } from '@fortawesome/free-solid-svg-icons';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
+import { reducers, metaReducers } from './store/reducers/global.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import {CustomSerializer} from './reducers/custom-route-serializer';
+import {CustomSerializer} from './store/reducers/custom-route-serializer';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './store/effects/app.effects';
+
 
 
 @NgModule({
@@ -37,7 +42,11 @@ import {CustomSerializer} from './reducers/custom-route-serializer';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot({
       serializer: CustomSerializer
-    })  ],
+    }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    EffectsModule.forRoot([AppEffects]),
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

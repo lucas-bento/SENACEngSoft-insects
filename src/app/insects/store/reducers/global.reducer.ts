@@ -7,7 +7,7 @@ export interface InsectState {
 
 export const insectReducer: ActionReducerMap<InsectState> = {
   insects: bugViewReducer
-}
+};
 
 export const getInsectState = createFeatureSelector<InsectState>(
   'insect'

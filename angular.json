@@ -136,8 +136,13 @@
               "devServerTarget": "insects:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "insects"
 }

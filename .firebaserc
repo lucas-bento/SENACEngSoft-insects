@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "insect-views": {
+      "hosting": {
+        "insects": [
+          "insect-views"
+        ]
+      }
+    }
+  }
+}
