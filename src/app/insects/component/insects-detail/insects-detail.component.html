@@ -6,17 +6,17 @@
         <input type="text" matInput placeholder="Nome popular" [(ngModel)]="insect.popularName">
       </mat-card-title>
 
-<!--      <mat-card-subtitle class="full-width">-->
-<!--        <input type="text" matInput placeholder="Nome cientifico" [(ngModel)]="insect.scientificName">-->
-<!--      </mat-card-subtitle>-->
+      <mat-card-subtitle class="full-width">
+        <input type="text" matInput placeholder="Nome cientifico" [(ngModel)]="insect.scientificName">
+      </mat-card-subtitle>
     </mat-card-header>
 
-<!--    <label class="hoverable" for="fileInput">-->
-<!--      <img mat-card-image  [(ngModel)]="insect.image" [src]="insect.image ? insect.image : 'https://omaharentalads.com/images/ladybugs-clipart-symmetrical-7.png'" alt="{{insect.popularName}}">-->
-<!--      <div class="hover-text">Escolher imagem</div>-->
-<!--      <div class="background"></div>-->
-<!--    </label>-->
-<!--    <input id="fileInput" type='file' (change)="onSelectFile($event)">-->
+    <label class="hoverable" for="fileInput">
+      <img mat-card-image  [(ngModel)]="insect.image" [src]="insect.image ? insect.image : 'https://omaharentalads.com/images/ladybugs-clipart-symmetrical-7.png'" alt="{{insect.popularName}}">
+      <div class="hover-text">Escolher imagem</div>
+      <div class="background"></div>
+    </label>
+    <input id="fileInput" type='file' (change)="onSelectImage($event)">
 
 
     <mat-card-content>
@@ -41,34 +41,34 @@
 <!--        </div>-->
 <!--      </div>-->
 
-<!--      <div>-->
-<!--        <mat-form-field class="full-width">-->
-<!--          <textarea matInput placeholder="Descrição"-->
-<!--                    cdkTextareaAutosize-->
-<!--                    #autosize="cdkTextareaAutosize"-->
-<!--                    cdkAutosizeMinRows="1" [(ngModel)]="insect.description"></textarea>-->
-<!--        </mat-form-field>-->
-<!--      </div>-->
+      <div>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Descrição"
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1" [(ngModel)]="insect.description"></textarea>
+        </mat-form-field>
+      </div>
 
-<!--      <div>-->
-<!--        <mat-form-field class="chip-list">-->
-<!--          <mat-label>Habitats</mat-label>-->
+      <div>
+        <mat-form-field class="chip-list">
+          <mat-label>Habitats</mat-label>
 
-<!--          <mat-chip-list #chipList>-->
-<!--            <mat-chip *ngFor="let habitat of insect.habitats" (removed)="removeHabitat(habitat)">-->
-<!--              {{ habitat }}-->
-<!--              <mat-icon matChipRemove >cancel</mat-icon>-->
-<!--            </mat-chip>-->
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let habitat of insect.habitats" (removed)="removeHabitat(habitat)">
+              {{ habitat }}
+              <mat-icon matChipRemove >cancel</mat-icon>
+            </mat-chip>
 
-<!--            <input-->
-<!--              [matChipInputFor]="chipList"-->
-<!--              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"-->
-<!--              [matChipInputAddOnBlur]="addOnBlur"-->
-<!--              (matChipInputTokenEnd)="add($event)">-->
-<!--          </mat-chip-list>-->
+            <input
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
 
-<!--        </mat-form-field>-->
-<!--      </div>-->
+        </mat-form-field>
+      </div>
     </mat-card-content>
 
     <mat-card-actions>
