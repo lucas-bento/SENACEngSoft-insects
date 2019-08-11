@@ -1,31 +1,31 @@
 import {Insect} from '../../model/insect.model';
 import {Action, createReducer, on} from '@ngrx/store';
-import {createBugView, deleteBugView, selectBugView, unselectBugView, updateBugList, updateBugView} from '../actions/insect.actions';
+import {createBug, deleteBug, selectBug, unselectBug, updateBugList, updateBug} from '../actions/insect.actions';
 import {createEntityAdapter, EntityState} from '@ngrx/entity';
 
 
-export const bugViewAdapter = createEntityAdapter<Insect>({
+export const bugAdapter = createEntityAdapter<Insect>({
   sortComparer: (a: Insect, b: Insect) => a.popularName.localeCompare(b.popularName)
 });
 
-export interface BugViewState extends EntityState<Insect> {
+export interface BugState extends EntityState<Insect> {
   insect?: Insect;
 }
 
-const initialState = bugViewAdapter.getInitialState();
+const initialState = bugAdapter.getInitialState();
 
 const reducer = createReducer(
   initialState,
-  on(updateBugList, (state, {insects}) => bugViewAdapter.addAll(insects, state)),
-  on(selectBugView, (state, {insect}) => ({...state, insect})),
-  on(unselectBugView, updateBugView, (state: BugViewState) => {
+  on(updateBugList, (state, {insects}) => bugAdapter.addAll(insects, state)),
+  on(selectBug, (state, {insect}) => ({...state, insect})),
+  on(unselectBug, updateBug, (state: BugState) => {
     const {insect,  ...rest} = state;
     return rest;
   }),
-  on(createBugView, (state, {insect}) => bugViewAdapter.addOne(insect, state)),
-  on(deleteBugView, (state, {id}) => bugViewAdapter.removeOne(id, state)),
+  on(createBug, (state, {insect}) => bugAdapter.addOne(insect, state)),
+  on(deleteBug, (state, {id}) => bugAdapter.removeOne(id, state)),
 );
 
-export function bugViewReducer(state: BugViewState, action: Action) {
+export function bugReducer(state: BugState, action: Action) {
   return reducer(state, action);
 }

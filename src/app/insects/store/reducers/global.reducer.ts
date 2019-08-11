@@ -1,12 +1,12 @@
-import {bugViewReducer, BugViewState} from './insect.reducer';
+import {bugReducer, BugState} from './insect.reducer';
 import {ActionReducerMap, createFeatureSelector} from '@ngrx/store';
 
 export interface InsectState {
-  insects: BugViewState;
+  insects: BugState;
 }
 
 export const insectReducer: ActionReducerMap<InsectState> = {
-  insects: bugViewReducer
+  insects: bugReducer
 };
 
 export const getInsectState = createFeatureSelector<InsectState>(

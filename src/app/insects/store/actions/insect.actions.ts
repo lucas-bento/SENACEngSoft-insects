@@ -3,31 +3,31 @@ import {Insect} from '../../model/insect.model';
 
 
 export const updateBugList = createAction(
-  '[Insects] Update bugView list',
+  '[Insects] Update bug list',
   props<{insects: Insect[]}>(),
 );
 
-export const selectBugView = createAction(
-  '[Insects] Select bugView.',
+export const selectBug = createAction(
+  '[Insects] Select bug.',
   props<{insect: Insect}>()
 );
 
-export const unselectBugView = createAction(
-  '[Insects] Unselect bugView.'
+export const unselectBug = createAction(
+  '[Insects] Unselect bug.'
 );
 
-export const createBugView = createAction(
-  '[Insects] Create bugView.',
+export const createBug = createAction(
+  '[Insects] Create bug.',
   props<{insect: Insect}>()
 );
 
-export const updateBugView = createAction(
-  '[Insects] Update bugView.',
+export const updateBug = createAction(
+  '[Insects] Update bug.',
   props<{insect: Insect}>()
 );
 
-export const deleteBugView = createAction(
-  '[Insects] Delete bugView.',
+export const deleteBug = createAction(
+  '[Insects] Delete bug.',
   props<{id: string}>()
 );
 

@@ -8,7 +8,7 @@
       <app-insects-list [insects]="insects$ | async" (actionEmmiter)="dispatch($event)"></app-insects-list>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button routerLink="/core/layout/insects/insect" color="primary">Novo inseto</button>
+      <button mat-button routerLink="/core/layout/insects/insect" (click)="createInsect()" color="primary">Novo inseto</button>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -2,7 +2,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Insect } from '../../model/insect.model';
 import { Action } from '@ngrx/store';
-import {unselectBugView, updateBugView} from '../../store/actions/insect.actions';
+import {unselectBug, updateBug, deleteBug} from '../../store/actions/insect.actions';
 import {MatChipInputEvent} from '@angular/material';
 
 
@@ -33,7 +33,7 @@ export class InsectsDetailComponent implements OnInit {
   actionEmmiter = new EventEmitter<Action>();
 
   unselect() {
-    this.actionEmmiter.emit(unselectBugView());
+    this.actionEmmiter.emit(unselectBug());
   }
 
 
@@ -60,17 +60,17 @@ export class InsectsDetailComponent implements OnInit {
   removeHabitat(habitat: string): void {
     this.insect.habitats = this.insect.habitats.filter(item => item !== habitat);
   }
-  //
-  // toggleLocomotion(mode: string): void {
-  //   if (mode === 'flying') {
-  //     this.insect.locomotion.flying = !this.insect.locomotion.flying;
-  //   } else if (mode === 'walking') {
-  //     this.insect.locomotion.walking = !this.insect.locomotion.walking;
-  //   } else if (mode === 'swimming') {
-  //     this.insect.locomotion.swimming = !this.insect.locomotion.swimming;
-  //   }
-  // }
-  //
+  
+  toggleLocomotion(mode: string): void {
+    if (mode === 'flying') {
+      this.insect.locomotion.flying = !this.insect.locomotion.flying;
+    } else if (mode === 'walking') {
+      this.insect.locomotion.walking = !this.insect.locomotion.walking;
+    } else if (mode === 'swimming') {
+      this.insect.locomotion.swimming = !this.insect.locomotion.swimming;
+    }
+  }
+  
   onSelectImage(event) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -85,7 +85,11 @@ export class InsectsDetailComponent implements OnInit {
   }
 
   save() {
-    this.actionEmmiter.emit(updateBugView({insect: this.insect}))
+    this.actionEmmiter.emit(updateBug({insect: this.insect}))
+  }
+
+  delete() {
+    this.actionEmmiter.emit(deleteBug({id: this.insect.id}))
   }
 
   ngOnInit() {}
