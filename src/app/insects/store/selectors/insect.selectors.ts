@@ -7,7 +7,6 @@ export const getBugState = createSelector(
   state => state.bugs
 );
 
-
 export const getAllBugs = createSelector(
   getBugState,
   state => bugAdapter.getSelectors().selectAll(state)

@@ -2,7 +2,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Insect } from '../../model/insect.model';
 import { Action } from '@ngrx/store';
-import {unselectBug, updateBug, deleteBug} from '../../store/actions/insect.actions';
+import {unselectBug, updateBug, deleteBug, createBug} from '../../store/actions/insect.actions';
 import {MatChipInputEvent} from '@angular/material';
 
 
@@ -85,7 +85,11 @@ export class InsectsDetailComponent implements OnInit {
   }
 
   save() {
-    this.actionEmmiter.emit(updateBug({bug: this.insect}))
+    if(this.insect.id && this.insect.id !== '') {
+      this.actionEmmiter.emit(updateBug({bug: this.insect}))
+    } else {
+      this.actionEmmiter.emit(createBug({bug: this.insect}))
+    }
   }
 
   delete() {

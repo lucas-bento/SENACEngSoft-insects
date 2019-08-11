@@ -1,5 +1,10 @@
 export class Insect {
     constructor(){
+        this.id =""
+        this.popularName = ""
+        this.scientificName = ""
+        this.description = ""
+        this.image = ""
         this.habitats = [];
         this.locomotion = {
             walking:false,

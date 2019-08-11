@@ -15,20 +15,14 @@ export class InsectsComponent implements OnInit {
 
   insects$: Observable<Insect []>;
   
-  @Output()
-  actionEmmiter = new EventEmitter<Action>();
-
   constructor(private store: Store<BugState>) { }
+
   ngOnInit(): void {
     this.insects$ = this.store.pipe(select(getAllBugs));
   }
 
   createInsect() {
-    var it = new Insect()
-
-    console.log(it)
-
-    this.actionEmmiter.emit(selectBug({bug: it}));
+    this.dispatch(selectBug({bug: new Insect()}));
   }
 
   dispatch(action: Action) {

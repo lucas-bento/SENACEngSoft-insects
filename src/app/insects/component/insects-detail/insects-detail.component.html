@@ -73,7 +73,7 @@
       <div fxLayoutAlign="space-between">
         <button mat-button routerLink="/core/layout/insects" class="insects-primary" (click)="unselect()">Voltar para lista</button>
         <div>
-          <button mat-button color="warn" class="insects-primary" (click)="delete()">Deletar</button>
+          <button *ngIf="insect.id !== ''" mat-button color="warn" class="insects-primary" (click)="delete()">Deletar</button>
           <button mat-button class="insects-primary" (click)="save()">Salvar</button>
         </div>
       </div>
