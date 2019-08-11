@@ -16,13 +16,13 @@ const initialState = bugAdapter.getInitialState();
 
 const reducer = createReducer(
   initialState,
-  on(updateBugList, (state, {bug: insects}) => bugAdapter.addAll(insects, state)),
-  on(selectBug, (state, {bug: insect}) => ({...state, insect})),
+  on(updateBugList, (state, {bugs: bugs}) => bugAdapter.addAll(bugs, state)),
+  on(selectBug, (state, {bug: bug}) => ({...state, bug: bug})),
   on(unselectBug, updateBug, (state: BugState) => {
-    const {bug: insect,  ...rest} = state;
+    const {bug: bug,  ...rest} = state;
     return rest;
   }),
-  on(createBug, (state, {bug: insect}) => bugAdapter.addOne(insect, state)),
+  on(createBug, (state, {bug: bug}) => bugAdapter.addOne(bug, state)),
   on(deleteBug, (state, {id}) => bugAdapter.removeOne(id, state)),
 );
 

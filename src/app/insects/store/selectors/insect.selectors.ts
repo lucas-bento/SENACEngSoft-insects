@@ -4,7 +4,7 @@ import {bugAdapter} from '../reducers/insect.reducer';
 
 export const getBugState = createSelector(
   getInsectState,
-  state => state.insects
+  state => state.bugs
 );
 
 
@@ -15,5 +15,5 @@ export const getAllBugs = createSelector(
 
 export const getSelectedBug = createSelector(
   getBugState,
-  state => state.insect
+  state => state.bug
 );

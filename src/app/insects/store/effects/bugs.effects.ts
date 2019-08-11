@@ -14,7 +14,7 @@ export class BugsEffects {
 
   updateBugsList$ = createEffect(() =>
     this.firestore.collection<Insect>('bugs').valueChanges().pipe(
-      map(insects => updateBugList({bug: insects})),
+      map(insects => updateBugList({bugs: insects})),
   ));
 
   updateBug$ = createEffect(() => this.actions.pipe(

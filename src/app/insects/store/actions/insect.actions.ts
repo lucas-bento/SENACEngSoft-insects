@@ -4,7 +4,7 @@ import {Insect} from '../../model/insect.model';
 
 export const updateBugList = createAction(
   '[Insects] Update bug list',
-  props<{bug: Insect[]}>(),
+  props<{bugs: Insect[]}>(),
 );
 
 export const selectBug = createAction(
