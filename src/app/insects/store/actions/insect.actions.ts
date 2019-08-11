@@ -4,12 +4,12 @@ import {Insect} from '../../model/insect.model';
 
 export const updateBugList = createAction(
   '[Insects] Update bug list',
-  props<{insects: Insect[]}>(),
+  props<{bug: Insect[]}>(),
 );
 
 export const selectBug = createAction(
   '[Insects] Select bug.',
-  props<{insect: Insect}>()
+  props<{bug: Insect}>()
 );
 
 export const unselectBug = createAction(
@@ -18,12 +18,12 @@ export const unselectBug = createAction(
 
 export const createBug = createAction(
   '[Insects] Create bug.',
-  props<{insect: Insect}>()
+  props<{bug: Insect}>()
 );
 
 export const updateBug = createAction(
   '[Insects] Update bug.',
-  props<{insect: Insect}>()
+  props<{bug: Insect}>()
 );
 
 export const deleteBug = createAction(

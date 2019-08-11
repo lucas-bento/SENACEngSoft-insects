@@ -9,20 +9,20 @@ export const bugAdapter = createEntityAdapter<Insect>({
 });
 
 export interface BugState extends EntityState<Insect> {
-  insect?: Insect;
+  bug?: Insect;
 }
 
 const initialState = bugAdapter.getInitialState();
 
 const reducer = createReducer(
   initialState,
-  on(updateBugList, (state, {insects}) => bugAdapter.addAll(insects, state)),
-  on(selectBug, (state, {insect}) => ({...state, insect})),
+  on(updateBugList, (state, {bug: insects}) => bugAdapter.addAll(insects, state)),
+  on(selectBug, (state, {bug: insect}) => ({...state, insect})),
   on(unselectBug, updateBug, (state: BugState) => {
-    const {insect,  ...rest} = state;
+    const {bug: insect,  ...rest} = state;
     return rest;
   }),
-  on(createBug, (state, {insect}) => bugAdapter.addOne(insect, state)),
+  on(createBug, (state, {bug: insect}) => bugAdapter.addOne(insect, state)),
   on(deleteBug, (state, {id}) => bugAdapter.removeOne(id, state)),
 );
 

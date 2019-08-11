@@ -28,7 +28,7 @@ export class InsectsComponent implements OnInit {
 
     console.log(it)
 
-    this.actionEmmiter.emit(selectBug({insect: it}));
+    this.actionEmmiter.emit(selectBug({bug: it}));
   }
 
   dispatch(action: Action) {

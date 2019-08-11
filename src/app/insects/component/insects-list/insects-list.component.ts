@@ -24,6 +24,6 @@ export class InsectsListComponent implements OnInit {
   }
 
   select(insect: Insect) {
-    this.actionEmmiter.emit(selectBug({insect}));
+    this.actionEmmiter.emit(selectBug({bug: insect}));
   }
 }

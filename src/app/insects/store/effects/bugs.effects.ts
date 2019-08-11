@@ -14,16 +14,16 @@ export class BugsEffects {
 
   updateBugsList$ = createEffect(() =>
     this.firestore.collection<Insect>('bugs').valueChanges().pipe(
-      map(insects => updateBugList({insects})),
+      map(insects => updateBugList({bug: insects})),
   ));
 
   updateBug$ = createEffect(() => this.actions.pipe(
       ofType(updateBug),
       exhaustMap((action) =>
-        from(this.firestore.doc(`bugs/${action.insect.id}`).set(action.insect)).pipe(
+        from(this.firestore.doc(`bugs/${action.bug.id}`).set(action.bug)).pipe(
           concatMap(() => from([
             navigateTo({commands: ['core', 'layout', 'insects']}),
-            showSnackBar({message: `${action.insect.popularName} atualizado`, config: {}})
+            showSnackBar({message: `${action.bug.popularName} atualizado`, config: {}})
           ])),
           catchError(() => of(showSnackBar({
             message: 'Deu ruim',

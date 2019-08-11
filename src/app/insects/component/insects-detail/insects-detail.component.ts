@@ -85,7 +85,7 @@ export class InsectsDetailComponent implements OnInit {
   }
 
   save() {
-    this.actionEmmiter.emit(updateBug({insect: this.insect}))
+    this.actionEmmiter.emit(updateBug({bug: this.insect}))
   }
 
   delete() {
