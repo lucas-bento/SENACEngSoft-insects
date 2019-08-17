@@ -1,0 +1,43 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+<div class="container" fxLayout="row" fxLayoutAlign="center">
+  <mat-card fxFlex="0 1 400px">
+    <mat-card-header>
+      <mat-card-title class="full-width">
+        Login
+      </mat-card-title>
+      <mat-card-subtitle class="full-width">
+        Preencha o formulario, ou use sua conta no Google
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-icon matPrefix>person</mat-icon>
+<!--          <mat-error #ngIf="loginForm.get('email').hasError('email')">-->
+<!--            Insira um email válido-->
+<!--          </mat-error>-->
+<!--          <mat-error #ngIf="loginForm.get('email').hasError('required')">-->
+<!--            Email é obrigatório-->
+<!--          </mat-error>-->
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Senha" formControlName="password">
+          <mat-icon matPrefix>vpn_key</mat-icon>
+<!--          <mat-error #ngIf="loginForm.get('password').hasError('required')">-->
+<!--            Senha é obrigatória-->
+<!--          </mat-error>-->
+        </mat-form-field>
+      <div fxLayout="column" fxLayoutAlign="center">
+        <button mat-raised-button type="button" (click)="google()">
+          <img src="/assets/google.png" width="24px"/> Sign in with Google
+        </button>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button type="submit"><mat-icon></mat-icon> Sign In</button>
+      <button mat-raised-button type="button"><mat-icon></mat-icon> Sign Up</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+</form>

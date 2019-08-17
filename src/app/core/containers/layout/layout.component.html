@@ -11,6 +11,17 @@
         <mat-icon color="primary">bug_report</mat-icon> Insects
       </mat-list-item>
 
+      <mat-list-item (click)="logout(); sidenav.toggle()" *ngIf="isAuthenticated$ | async; else login">
+        <mat-icon color="primary">close</mat-icon> Logout
+      </mat-list-item>
+
+      <ng-template #login>
+        <mat-list-item (click)="sidenav.toggle()">
+          <mat-icon color="primary">person</mat-icon> Login
+        </mat-list-item>
+
+      </ng-template>
+
     </mat-list>
   </mat-sidenav>
 

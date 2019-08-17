@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AwesomeModule } from './awesome/awesome.module'
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     MaterialModule,
