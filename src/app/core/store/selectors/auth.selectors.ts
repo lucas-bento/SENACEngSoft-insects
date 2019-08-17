@@ -7,11 +7,11 @@ export const getAuthState = createSelector (
 );
 
 export const isAuthenticated = createSelector (
-  getCoreState,
-  state => !!state.auth
+  getAuthState,
+  state => !!state.user
 );
 
 export const getAuthenticatedUser = createSelector (
-  getCoreState,
-  state => state.auth
+  getAuthState,
+  state => state.user
 );
