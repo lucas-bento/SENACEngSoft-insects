@@ -19,7 +19,6 @@ export class LayoutComponent implements OnInit {
     this.isAuthenticated$ = this.store.pipe(select((isAuthenticated)))
   }
 
-
   logout() {
     this.store.dispatch(signOut())
   }
